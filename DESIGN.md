@@ -10,13 +10,14 @@ Everything needed to build the site is in this file and in the `assets/` folder 
 These rules exist so that every build of this site looks **identical**.
 
 1. **Follow the values literally.** Every size, color, font, gap, radius, text and image is specified. Do not round, "improve", re-interpret or substitute.
-2. **Do not invent.** If something is not described here, it does not exist: no extra sections, decorations, shadows, gradients, hover effects, animations, icons, badges, dividers, emojis or copy.
+2. **Do not invent.** If something is not described here, it does not exist: no extra sections, decorations, shadows, gradients, hover effects, animations, icons, badges, dividers, emojis or copy. The only way to add something new is §15 (new blocks are assembled from the existing primitives, never from new styles).
 3. **Use only the tokens from §2.** No raw hex values, pixel values or font settings in component CSS except the ones written in this document.
 4. **Use the copy from §9 verbatim**, including punctuation, quotes («», “”), dashes (– for ranges, — for pauses), capitalization and forced line breaks (`<br>`).
 5. **Missing content is marked `TODO`** (§12). Render the placeholder exactly as described there; never write your own text, images or links.
 6. **Text wraps naturally** inside the specified widths, except where `<br>` is given. Do not add `text-wrap: balance`, hyphenation or manual breaks.
 7. **Typography rule:** put a non-breaking space (`&nbsp;`) between a number and its unit (`48&nbsp;hours`, `1&nbsp;MW`, `15–60&nbsp;kW`) and before an em dash (`weeks&nbsp;— and`). In §9 these are already written as `&nbsp;`.
 8. **Three layouts:** desktop (≥ 1280), tablet (768–1279), mobile (< 768). Everything in §4–§9 describes desktop; §3.5 lists every value that changes on tablet and mobile. Anything not listed in §3.5 stays as on desktop.
+9. **New content or a redesign of an existing page?** Follow §15 — it explains how to build any new block from this system and how to propose variants.
 
 ---
 
@@ -1042,3 +1043,119 @@ quote-colo-agent/
     ├── favicon/          favicon.svg · favicon.ico · favicon-16x16 · favicon-32x32 · favicon-48x48 · apple-touch-icon (180) · icon-192 · icon-512 · site.webmanifest
     └── og/               og-image.png (1200×630)
 ```
+
+---
+
+## 15. Building new blocks & redesigning existing pages
+
+Use this section when content comes from somewhere else (e.g. a page of the old QuoteColo site) and must be rebuilt in this design system. The result must look like it was always part of the pages in §9: same tokens, grid, rhythm, components. **Never copy styles, colors, fonts, icons or layouts from the old page** — take only its content and meaning.
+
+### 15.1 Workflow (always in this order)
+
+1. **Inventory the source.** List every content chunk of the old page top to bottom: headings, paragraphs, lists, numbers/stats, tables, images/video, quotes/testimonials, CTAs/forms, FAQs, links. Keep the copy verbatim (fix only obvious typos; never rewrite meaning). Drop navigation, footer, cookie banners and anything duplicated by our header/footer.
+2. **Group into sections.** One section = one idea with one `h2`. Merge tiny fragments into the nearest section; split walls of text at their natural sub-headings.
+3. **Classify each section** by content type (§15.3) and **map it to a block recipe** from the catalogue (§15.2). Exact match first; adapt a recipe second; compose a new block (§15.5) only if nothing fits.
+4. **Lay out on the grid** using only the allowed spans (§15.4) and the vertical rhythm of §3.4.
+5. **Check the page rhythm** (§15.6): backgrounds, accent panels, CTA placement.
+6. **Define tablet & mobile** for every block with the generic rules (§15.7).
+7. **Report** in the format of §15.8: the mapping table, the variants offered for any new or adapted block, and the content TODOs (missing images, links, copy).
+
+### 15.2 Block catalogue (reuse these first)
+
+| Recipe | Built from | Use for |
+|---|---|---|
+| **R1 Section head** | §3.3 (`h2` + optional `.t-lead`, 588 or 690 wide) | Start of every section. Short title → 588, long → 690. |
+| **R2 Split hero** | §9.1 (6 + 6 col; text + media/quote) | First block of a page: page `h1`, one-line promise, one CTA. |
+| **R3 Metric row** | §9.2 (4 × 3 col trust cards) | 2–4 key numbers. 3 numbers → 3 × 4 col; 2 → 2 × 6 col. |
+| **R4 Card grid** | §9.3 / §9.12 small cards (`card`, `card-gradient`) | 3–8 parallel items with title + text (+ icon or illustration, + button). 4 per row = 3 col, 3 per row = 4 col, 2 per row = 6 col. |
+| **R5 Process / steps** | §9.5 (3 × 4 col step cards with number badges) | Ordered steps, 3–4 items (4 → 4 × 3 col). |
+| **R6 Media + list** | §9.7 (4 col image card + 8 col of criterion cards) | One illustration + 4–8 short labelled points. |
+| **R7 Large split card** | §9.12 big card (6 + 6 inside a white card, padding 40) | One featured offer: tag + `h3` + text + CTA beside a photo. |
+| **R8 Comparison rows** | §9.10 (3 col label + 9 col content, no dividers) | Before/after, explainer rows, long-form facts with a key number. |
+| **R9 Scenario grid** | §9.11 (2 × 6 col cards, one highlighted `card-accent`) | Options/alternatives where one is "ours". |
+| **R10 Conversation** | §9.6 chat panel | Real request → answer examples. |
+| **R11 Testimonials** | §9.8 carousel | Any quotes from clients (2+). |
+| **R12 Quote panel + form** | §9.9 (with benefits) / §9.15 (compact) | The page's conversion block. One per page, two only on long pages (top half + bottom half). |
+| **R13 Founder / big quote** | §9.14 or §9.10 market quote | One strong statement by a person. |
+| **R14 Video** | §9.16 / case-study cards §9.13 | Video content (poster + play). |
+| **R15 Tabbed explorer** | §9.17 Services | 3–6 categories, each with a short text + CTA + optional photo. |
+| **R16 Chips** | §9.17 browse block | Tags, filters, related links (≥ 6 short items). |
+| **R17 FAQ** | §9.18 | Any Q&A. |
+| **R18 Facility table** | §6.9.1 | Lists of places/companies with 3–5 attributes. |
+| **R19 Matrix table** | §6.9.2 | Numbers/prices across 2 dimensions. |
+| **R20 Note card** | §6.9.1 note | A disclaimer or remark that belongs to the block above. |
+| **R21 Logos marquee** | §9.4 | Partner / provider logos. |
+| **R22 Long-form text** | see §15.5 | Articles, legal, plain text sections. |
+
+### 15.3 Content type → recipe
+
+| Content in the old page | Recipe |
+|---|---|
+| Page title + intro + main CTA | R2 (or R1 + CTA button below when there is no media) |
+| 2–4 statistics | R3 |
+| Features / services / benefits (3–8 items) | R4; with an image to accompany → R6 |
+| How it works / steps | R5 |
+| One featured service | R7 |
+| Text-heavy explainers with a key fact each | R8 |
+| Pros/cons, "other ways vs us" | R9 |
+| Testimonials | R11 (one testimonial only → R13) |
+| Contact form / quote request | R12 |
+| Lists of facilities, providers, locations | R18 |
+| Price lists, spec sheets | R19 |
+| Categories with sub-descriptions | R15 (≤ 6) or R4 (> 6) |
+| Keyword/link lists | R16 |
+| FAQ | R17 |
+| Plain long text | R22 |
+
+### 15.4 Grid rules for any block
+
+- Container 1200, 12 columns × 78, gutter 24 (§3.2). Every element starts and ends on a column edge. Allowed spans: 3, 4, 5, 6, 7, 8, 9, 12 (widths in §3.2).
+- Allowed splits of a row: 12 · 6 + 6 · 4 + 8 · 8 + 4 · 3 + 9 · 9 + 3 · 4 + 4 + 4 · 3 + 3 + 3 + 3. Nothing else (no 5 + 7, no 2 + 10).
+- Text measure: section subtitles max 690 (7 col); paragraphs max 894 (9 col); never a full 1200-wide paragraph.
+- Everything is left-aligned (§2.3). Centered content is not allowed except button labels, badges and the video prompt.
+- Spacing inside blocks uses only §2.4 values and the rule of air: card padding (24) < gap between cards (24 / 16) < head → content (40) < section gap (120). Large panels: padding 32–40.
+- Cards in one row have equal height (`align-items: stretch`) unless their content is a quote/testimonial (then `flex-start`).
+- Radius: cards 16, large media/panels 24, small parts 12 (§2.5). Images always rounded, `object-fit: cover`.
+
+### 15.5 Composing a new block (only when nothing in §15.2 fits)
+
+A new block must be **assembled from existing primitives only**: section head, card surfaces (§6.4), buttons (§6.1), tags (§6.3), tiles + icons (§4), checklist rows (§6.5), number badges, metric type, tables (§6.9), images (§5), carousel controls (§6.6), accordion (§6.8). No new colors, fonts, shadows, radii, icon styles or decorations.
+
+Rules:
+1. Pick the closest recipe and change **one** thing (span, count, order of elements, background surface) — not several.
+2. Card anatomy stays: [icon tile or illustration or tag] → title (`.t-h4`, or `.t-h3` for ≤ 3 big cards) → text (`.t-body` secondary, or `.t-body-l` for ≤ 3 big cards) → optional checklist → optional button (Button S inside cards, Button L only in panels/heroes).
+3. Highlight at most **one** item per group with `card-accent` (or a Filled button); everything else stays neutral.
+4. **R22 Long-form text**: section head (7 col) → body in 9 col (`.t-body-l`, paragraphs gap 16); sub-headings `.t-h4` (margin-top 40, margin-bottom 16); lists = checklist rows (§6.5) with `check` icons; inline links `--color-text-accent`; images inside text 9 col wide, radius 16; pull quotes = R13 market-quote layout.
+5. Name the new block (e.g. "R23 Location stats strip"), describe it in the same format as §9 (structure, spans, tokens, content) and add it to the catalogue so it can be reused.
+
+### 15.6 Page rhythm
+
+- Order of a typical page: R2 (hero) → proof (R3 / R21) → main content blocks → R12 (conversion) → social proof (R11 / R14) → R17 (FAQ) → footer.
+- Backgrounds: white by default; wrap **one** or two consecutive content blocks in a gradient band (§3.4) to break long pages — never more than two bands in a row, never two bands back-to-back.
+- Accent (blue) surfaces: one R12 per screen-height of content at most; never two blue panels adjacent.
+- Every page has exactly one `h1`; each section one `h2`.
+- A CTA ("Get my quote") appears at least once every ~3 sections (hero, a card button, R12).
+
+### 15.7 Tablet & mobile for any block
+
+Apply §3.5 sizes plus these generic transformations:
+
+| Desktop layout | Tablet (768–1279) | Mobile (< 768) |
+|---|---|---|
+| 4 cards in a row | 2 × 2 grid | horizontal scroll row (cards 286 wide) + arrows |
+| 3 cards in a row | 1 column | 1 column |
+| 2 cards in a row | 2 columns | 1 column |
+| 6 + 6 / 4 + 8 / 8 + 4 split | stacked (text first, media second) | stacked |
+| 3 + 9 rows (R8) | label above content | label above content |
+| Tables | horizontal scroll + arrows (§6.10) | horizontal scroll + arrows, compact sizes |
+| Carousels | arrows shown | arrows shown, swipe |
+| Buttons | unchanged | full width |
+
+### 15.8 Proposing variants — required output
+
+When redesigning a page or creating a block, deliver:
+
+1. **Mapping table**: `old section → new section → recipe → notes`.
+2. **Variants** for every block that is new or adapted (not a 1:1 recipe): **2–3 options** named A / B / C, each one line on structure (spans, recipe it derives from) and one line on when it is better. Mark one as **Recommended** and build that one.
+3. **TODO list**: content that is missing or must be confirmed (images, links, real numbers, copy that looks outdated) — rendered as placeholders per §12, never invented.
+4. If the old page has content that does not fit the system at all (e.g. animated widgets, maps, third-party embeds), list it separately and propose the closest system-native alternative instead of recreating it.
