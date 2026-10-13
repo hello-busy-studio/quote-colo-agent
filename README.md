@@ -56,3 +56,7 @@ Then open http://localhost:4173, http://localhost:4173/boston/ and http://localh
 
 - Every change to the site is also recorded in `DESIGN.md` — the spec and the examples never disagree.
 - Changes go through a branch and a pull request, merged into `main` after review.
+
+---
+
+This repository was put together by [busy.studio](https://www.busy.studio/).
