@@ -1086,6 +1086,10 @@ Use this section when content comes from somewhere else (e.g. a page of the old 
 | **R20 Note card** | §6.9.1 note | A disclaimer or remark that belongs to the block above. |
 | **R21 Logos marquee** | §9.4 | Partner / provider logos. |
 | **R22 Long-form text** | see §15.5 | Articles, legal, plain text sections. |
+| **R23 Listing table** | §15.9 | Listings/offers with 5–6 attributes, a tag per row and secondary lines. |
+| **R24 Criteria pairs** | §15.9 | "Look for / red flag", "do / don't", pros/cons per topic (3–9 items). |
+| **R25 Claim → verify** | §15.9 | "What it says vs what it means" explainers (3–9 items, one highlighted). |
+| **R26 Grouped tables** | §15.9 | Several small tables grouped by segment, each with a title, range tag and description. |
 
 ### 15.3 Content type → recipe
 
@@ -1159,3 +1163,19 @@ When redesigning a page or creating a block, deliver:
 2. **Variants** for every block that is new or adapted (not a 1:1 recipe): **2–3 options** named A / B / C, each one line on structure (spans, recipe it derives from) and one line on when it is better. Mark one as **Recommended** and build that one.
 3. **TODO list**: content that is missing or must be confirmed (images, links, real numbers, copy that looks outdated) — rendered as placeholders per §12, never invented.
 4. If the old page has content that does not fit the system at all (e.g. animated widgets, maps, third-party embeds), list it separately and propose the closest system-native alternative instead of recreating it.
+
+### 15.9 Recipes added from redesigns
+
+Added from `pages/ai-hpc-land.md`; implementation in `example/ai-hpc-land/`.
+
+**R23 Listing table** — matrix table (§6.9.2 style): border 1 px `--color-border-neutral`, radius 20, header row gradient with `.t-caption` secondary; columns 200 · 160 · 220 · 140 · 300 · 180 (= 1200); every cell padding 16 20, left-aligned, flex column gap 4: main line `.t-body` primary (first column `.t-body-medium`), optional second line `.t-caption` tertiary; first column: name + tag below (Accent "Buy" / Neutral "Lease", gap 8). Caption "Updated …" (`.t-caption-medium` tertiary) 16 above the table. Mobile: columns 160 · 140 · 180 · 120 · 240 · 160 (= 1000), padding 12 16. Scroller + arrows §6.10.
+
+**R24 Criteria pairs** — grid 3 × 384, gap 24, on a gradient band. Card: `card`, padding 24, flex column, gap 16: `.t-h4` title → row (gap 8): Accent tag "Look for" + `.t-body` secondary → 1 px `--color-border-neutral` divider → row: Neutral tag "Red flag" + text. Tablet & mobile: 1 column (gap 16 / 12), mobile padding 16.
+
+**R25 Claim → verify** — grid 3 × 384, gap 24. Card: `card-gradient`, padding 24, gap 24: head (gap 12, centred): `tile-40` white with number badge + `.t-h4` title → block (gap 8): `.t-caption` tertiary "What the listing shows" + value `.t-h3` primary + `.t-body` secondary reaction → divider → block: `.t-caption-medium` accent "What to verify" + question `.t-body-l-medium` primary + `.t-body` secondary answer. The highlighted item spans 12 col as `card-accent`, padding 32, two halves (gap 48), no divider. Below the grid (gap 24): note bar — `card-gradient`, padding 20 24, flex, gap 16: `tile-40` pale with `check` + `.t-body` secondary (flex 1) + Button S Filled. Tablet: 2 columns, highlighted item stacked; mobile: 1 column, padding 16, note bar stacked with full-width button.
+
+**R26 Grouped tables** — flex column gap 24 of groups. Group: `card-gradient`, padding 24, gap 16: title row (wrap, gap 12, centred): `.t-h4` + Accent tag (range) + optional Neutral tag → `.t-body` secondary description → bordered table (white, border 1 px, radius 16, rows divided by 1 px, header gradient + `.t-caption` secondary; columns 260 · 220 · 160 · rest = 1152; first column `.t-body-medium`, note column secondary). Footnote below all groups (`.t-body` secondary, gap 40). Tablet: table 1000 wide; mobile: card padding 16, table 820 wide (160 · 150 · 110 · 400), scroller + arrows inside the card without bleed.
+
+**Adaptations used**: R2 hero with photo (588×518, radius 24) and subtitle (`.t-body-l` secondary, gap 24); R3 without icon tiles when values are long; R5 with 4 steps (4 × 282, padding 24, `.t-h4` + `.t-body`); R12 with subtitle (`.t-body-l` white under the title, gap 16), title-only benefits, a note instead of the legal line; R17 FAQ in groups (label `.t-caption-medium` tertiary, groups 40 apart); section head with an eyebrow tag (Accent tag above `h2`).
+
+**Image placeholder** (also for §12): element with the image's size and radius, `background: var(--surface-gradient), pattern tile, var(--color-bg-main)`, centred `.t-caption` tertiary text "TODO: <what the image shows>".

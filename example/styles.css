@@ -771,3 +771,117 @@ th, td { display: block; text-align: left; font-weight: inherit; }
   .note-card { padding: 16px; align-items: flex-start; }
   .table-foot { margin-top: 24px; }
 }
+
+/* ── AI & HPC land page (pages/ai-hpc-land.md) — new recipes R23–R27 ── */
+
+/* image placeholder (§12) */
+.img-ph { position: relative; display: grid; place-items: center; text-align: center; color: var(--color-text-tertiary);
+  background: var(--surface-gradient), var(--pattern) 0 0 / 482px 309px repeat, var(--color-bg-main); }
+
+/* R2 adaptation: hero with photo + subtitle */
+.hero--media .hero__top { gap: 24px; }
+.hero__media { width: 588px; height: 518px; border-radius: var(--radius-24); overflow: hidden; }
+@media (max-width: 1279px) { .hero__media { width: 100%; height: auto; aspect-ratio: 588 / 518; margin-top: 48px; } }
+@media (max-width: 767px) { .hero__media { margin-top: 40px; aspect-ratio: 4 / 3; } }
+
+/* R3 adaptation: metric row without icon tiles */
+.metric--plain .metric__row { justify-content: flex-start; }
+@media (min-width: 768px) and (max-width: 1279px) { .metric--plain .t-metric { font-size: 28px; line-height: 32px; } }
+
+/* R5 adaptation: 4 steps */
+.steps--4 { grid-template-columns: repeat(4, 282px); }
+.steps--4 .step { min-height: 0; padding: 24px; gap: 16px; }
+@media (max-width: 1279px) { .steps--4 { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 767px) { .steps--4 { grid-template-columns: 1fr; } }
+
+/* R23 Listing table */
+.table-c { width: 1200px; border: 1px solid var(--color-border-neutral); border-radius: 20px; overflow: hidden; background: var(--color-bg-main); }
+.table-c tr { display: grid; grid-template-columns: 200px 160px 220px 140px 300px 180px; }
+.table-c th, .table-c td { border-right: 1px solid var(--color-border-neutral); border-bottom: 1px solid var(--color-border-neutral); padding: 16px 20px; display: flex; flex-direction: column; gap: 4px; align-items: flex-start; }
+.table-c tr > *:last-child { border-right: 0; }
+.table-c tbody tr:last-child > * { border-bottom: 0; }
+.table-c thead tr { background: var(--surface-gradient), var(--color-bg-main); }
+.table-c thead th { padding: 12px 20px; justify-content: center; color: var(--color-text-secondary); font: 400 14px/16px var(--font-sans); }
+.table-c tbody th { gap: 8px; }
+.table-c .cell-main { color: var(--color-text-primary); }
+.table-c .cell-sub { color: var(--color-text-tertiary); }
+.table-updated { margin-bottom: 16px; }
+@media (max-width: 767px) {
+  .table-c { width: 1000px; }
+  .table-c tr { grid-template-columns: 160px 140px 180px 120px 240px 160px; }
+  .table-c th, .table-c td { padding: 12px 16px; }
+  .table-c thead th { padding: 12px 16px; font-size: 12px; }
+}
+
+/* R24 Criteria pair cards (look for / red flag) */
+.pairs { display: grid; grid-template-columns: repeat(3, 384px); gap: 24px; }
+.pair { padding: 24px; display: flex; flex-direction: column; gap: 16px; }
+.pair__row { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+.pair__div { height: 1px; background: var(--color-border-neutral); }
+@media (max-width: 1279px) { .pairs { grid-template-columns: 1fr; gap: 16px; } }
+@media (max-width: 767px) { .pairs { gap: 12px; } .pair { padding: 16px; } }
+
+/* R25 Claim → verify cards */
+.claims { display: grid; grid-template-columns: repeat(3, 384px); gap: 24px; }
+.claim { padding: 24px; display: flex; flex-direction: column; gap: 24px; }
+.claim__head { display: flex; gap: 12px; align-items: center; }
+.claim__block { display: flex; flex-direction: column; gap: 8px; }
+.claim__div { height: 1px; background: var(--color-border-neutral); }
+.claim--wide { grid-column: 1 / -1; padding: 32px; display: grid; grid-template-columns: 1fr 1fr; column-gap: 48px; row-gap: 24px; }
+.claim--wide .claim__head { grid-column: 1 / -1; }
+.claim--wide .claim__div { display: none; }
+.claim-bar { margin-top: 24px; padding: 20px 24px; display: flex; gap: 16px; align-items: center; }
+.claim-bar p { flex: 1; }
+@media (max-width: 1279px) {
+  .claims { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .claim--wide { grid-template-columns: 1fr; padding: 24px; }
+  .claim--wide .claim__div { display: block; }
+}
+@media (max-width: 767px) {
+  .claims { grid-template-columns: 1fr; gap: 12px; }
+  .claim, .claim--wide { padding: 16px; }
+  .claim-bar { flex-direction: column; align-items: stretch; padding: 16px; }
+}
+
+/* R26 Grouped market tables */
+.mgroups { display: flex; flex-direction: column; gap: 24px; }
+.mgroup { padding: 24px; display: flex; flex-direction: column; gap: 16px; }
+.mgroup__title { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.mgroup .table-scroll { margin-inline: 0; padding-inline: 0; }
+.table-d { width: 1152px; border: 1px solid var(--color-border-neutral); border-radius: var(--radius-16); overflow: hidden; background: var(--color-bg-main); }
+.table-d tr { display: grid; grid-template-columns: 260px 220px 160px 1fr; }
+.table-d th, .table-d td { padding: 16px 20px; border-bottom: 1px solid var(--color-border-neutral); }
+.table-d tbody tr:last-child > * { border-bottom: 0; }
+.table-d thead th { padding: 12px 20px; background: var(--surface-gradient), var(--color-bg-main); color: var(--color-text-secondary); font: 400 14px/16px var(--font-sans); }
+.table-d tbody th { font: 500 16px/20px var(--font-sans); color: var(--color-text-primary); }
+.table-d tbody td { font: 400 16px/20px var(--font-sans); color: var(--color-text-primary); }
+.table-d tbody td:last-child { color: var(--color-text-secondary); }
+@media (max-width: 1279px) { .table-d { width: 1000px; } .table-d tr { grid-template-columns: 220px 180px 140px 1fr; } }
+@media (max-width: 767px) {
+  .mgroup { padding: 16px; }
+  .table-d { width: 820px; }
+  .table-d tr { grid-template-columns: 160px 150px 110px 400px; }
+  .table-d th, .table-d td { padding: 12px 16px; }
+  .table-d thead th { font-size: 12px; }
+}
+
+/* R12 adaptation: panel subtitle, title-only benefits, note instead of legal text */
+.panel__lead { margin-top: -24px; }
+.benefit__text:only-child { padding-top: 4px; }
+
+/* R4 with eyebrow tag in section head */
+.section-head .tag { align-self: flex-start; }
+.cards-3 { display: grid; grid-template-columns: repeat(3, 384px); gap: 24px; }
+.cards-3 .use { padding: 24px; }
+@media (max-width: 1279px) { .cards-3 { grid-template-columns: 1fr 1fr; gap: 16px; } }
+@media (max-width: 767px) { .cards-3 { grid-template-columns: 1fr; gap: 12px; } .cards-3 .use { padding: 16px; } }
+.split-checks { display: flex; flex-direction: column; gap: 8px; }
+.split-actions { display: flex; flex-wrap: wrap; gap: 24px; align-items: center; }
+.metrics-3 { display: grid; grid-template-columns: repeat(3, 384px); gap: 24px; margin-top: 20px; }
+@media (max-width: 1279px) { .metrics-3 { grid-template-columns: 1fr 1fr 1fr; gap: 16px; } }
+@media (max-width: 767px) { .metrics-3 { grid-template-columns: 1fr; gap: 12px; } }
+
+/* R17 adaptation: grouped FAQ */
+.faq-group { display: flex; flex-direction: column; gap: 16px; }
+.faq-group + .faq-group { margin-top: 40px; }
+@media (max-width: 767px) { .faq-group + .faq-group { margin-top: 24px; } }
