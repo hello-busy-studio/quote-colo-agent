@@ -55,4 +55,4 @@ Then open http://localhost:4173, http://localhost:4173/boston/ and http://localh
 ## Rules of the repository
 
 - Every change to the site is also recorded in `DESIGN.md` — the spec and the examples never disagree.
-- Changes go through a branch and a pull request; the busy.studio designer reviews them.
+- Changes go through a branch and a pull request, merged into `main` after review.

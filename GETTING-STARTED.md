@@ -13,8 +13,8 @@ Or, for small things: **just ask to change the text.**
 
 1. Install the **Claude desktop app** and sign in.
 2. Get this repository onto your computer — easiest is to ask Claude in the Code tab:
-   *"Clone https://github.com/hello-busy-studio/quote-colo-agent and open it."*
-   (You need access to the `hello-busy-studio` organisation on GitHub — ask busy.studio if you don't have it.)
+   *"Clone <link to this repository> and open it."*
+   (You need access to the repository on GitHub — ask your team if you don't have it.)
 3. Open the `quote-colo-agent` folder in the Code tab. From now on Claude knows the rules of this project and will guide you.
 
 Not sure what to do? Just type **"Start"** — Claude will walk you through the steps below.
@@ -88,12 +88,12 @@ Claude changes the page **and** the copy in `DESIGN.md`, so the spec stays corre
 
 ## Step 5. Save it
 
-When you're happy, say **"Save and send for review"**. Claude puts your work on a separate branch and opens a pull request on GitHub. The busy.studio designer reviews it and merges it into the main version.
+When you're happy, say **"Save and send for review"**. Claude puts your work on a separate branch and opens a pull request on GitHub. Once it's reviewed, it's merged into the main version.
 
 ---
 
 ## Good to know
 
-- **The design rules are fixed** — one font, fixed colours, the 12-column grid, set spacing. If you want something outside them (a new colour, a different font), Claude will say so and suggest the closest option; ask busy.studio for anything beyond that.
+- **The design rules are fixed** — one font, fixed colours, the 12-column grid, set spacing. If you want something outside them (a new colour, a different font), Claude will say so and suggest the closest option.
 - **Everything is in English** on the site. You can talk to Claude in any language.
 - **Where things are:** see the folder list in [README.md](README.md).
