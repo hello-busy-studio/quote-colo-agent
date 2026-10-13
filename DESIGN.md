@@ -56,7 +56,8 @@ These rules exist so that every build of this site looks **identical**.
 | `--color-border-neutral` | `#E9E9EB` | Card borders, input borders, dividers |
 | `--color-border-neutral-hover` | `#CECECE` | Input hover border |
 | `--color-border-accent` | `#0C7DFF` | Outline button border, focus ring |
-| `--color-error` | `#FF3419` | Error message text and error input border |
+| `--color-error` | `#FF3419` | Error message text, error input border, Error tag text |
+| `--color-bg-error-pale` | `rgba(255, 52, 25, 0.10)` | Error tag background |
 | `--color-disabled` | `#D1D6E5` | Disabled buttons, inputs, carousel arrows |
 | `--color-white` | `#FFFFFF` | Text and icons on accent / dark / photo |
 | `--color-white-hover` | `rgba(255, 255, 255, 0.80)` | Hover of white links and the play button |
@@ -402,6 +403,7 @@ textarea.input { height: 136px; resize: vertical; }
 `display: inline-flex; align-items: center; height: 32px; padding: 0 12px; border-radius: var(--radius-12); white-space: nowrap;` text `.t-caption`.
 - **Neutral**: bg `--color-bg-tertiary`, text `--color-text-primary`.
 - **Accent**: bg `--color-bg-accent-pale`, text `--color-text-accent`.
+- **Error**: bg `--color-bg-error-pale`, text `--color-error`. Only for negative labels ("Red flag", "Avoid") — never as decoration.
 
 Tags are static, except the "Browse by deployment" chips (§9.17) which are links with hover bg `--color-bg-accent-pale-hover`.
 
@@ -916,6 +918,7 @@ Header cells (columns 2–7): 10U (1-3Amp 120v, 1-5TB) · 24U – 2 to 3kW & 100
   --color-border-neutral-hover: #CECECE;
   --color-border-accent: #0C7DFF;
   --color-error: #FF3419;
+  --color-bg-error-pale: rgba(255, 52, 25, 0.10);
   --color-disabled: #D1D6E5;
   --color-white: #FFFFFF;
   --color-white-hover: rgba(255, 255, 255, 0.80);
@@ -1123,7 +1126,7 @@ Use this section when content comes from somewhere else (e.g. a page of the old 
 
 ### 15.5 Composing a new block (only when nothing in §15.2 fits)
 
-A new block must be **assembled from existing primitives only**: section head, card surfaces (§6.4), buttons (§6.1), tags (§6.3), tiles + icons (§4), checklist rows (§6.5), number badges, metric type, tables (§6.9), images (§5), carousel controls (§6.6), accordion (§6.8). No new colors, fonts, shadows, radii, icon styles or decorations.
+A new block must be **assembled from existing primitives only**: section head, card surfaces (§6.4), buttons (§6.1), tags (§6.3: Neutral, Accent, Error), tiles + icons (§4), checklist rows (§6.5), number badges, metric type, tables (§6.9), images (§5), carousel controls (§6.6), accordion (§6.8). No new colors, fonts, shadows, radii, icon styles or decorations.
 
 Rules:
 1. Pick the closest recipe and change **one** thing (span, count, order of elements, background surface) — not several.
@@ -1170,7 +1173,7 @@ Added from `pages/ai-hpc-land.md`; implementation in `example/ai-hpc-land/`.
 
 **R23 Listing table** — matrix table (§6.9.2 style): border 1 px `--color-border-neutral`, radius 20, header row gradient with `.t-caption` secondary; columns 200 · 160 · 220 · 140 · 300 · 180 (= 1200); every cell padding 16 20, left-aligned, flex column gap 4: main line `.t-body` primary (first column `.t-body-medium`), optional second line `.t-caption` tertiary; first column: name + tag below (Accent "Buy" / Neutral "Lease", gap 8). Caption "Updated …" (`.t-caption-medium` tertiary) 16 above the table. Mobile: columns 160 · 140 · 180 · 120 · 240 · 160 (= 1000), padding 12 16. Scroller + arrows §6.10.
 
-**R24 Criteria pairs** — grid 3 × 384, gap 24, on a gradient band. Card: `card`, padding 24, flex column, gap 16: `.t-h4` title → row (gap 8): Accent tag "Look for" + `.t-body` secondary → 1 px `--color-border-neutral` divider → row: Neutral tag "Red flag" + text. Tablet & mobile: 1 column (gap 16 / 12), mobile padding 16.
+**R24 Criteria pairs** — grid 3 × 384, gap 24, on a gradient band. Card: `card`, padding 24, flex column, gap 16: `.t-h4` title → row (gap 8): Accent tag "Look for" + `.t-body` secondary → 1 px `--color-border-neutral` divider → row: Error tag "Red flag" + text. Tablet & mobile: 1 column (gap 16 / 12), mobile padding 16.
 
 **R25 Claim → verify** — grid 3 × 384, gap 24. Card: `card-gradient`, padding 24, gap 24: head (gap 12, centred): `tile-40` white with number badge + `.t-h4` title → block (gap 8): `.t-caption` tertiary "What the listing shows" + value `.t-h3` primary + `.t-body` secondary reaction → divider → block: `.t-caption-medium` accent "What to verify" + question `.t-body-l-medium` primary + `.t-body` secondary answer. The highlighted item spans 12 col as `card-accent`, padding 32, two halves (gap 48), no divider. Below the grid (gap 24): note bar — `card-gradient`, padding 20 24, flex, gap 16: `tile-40` pale with `check` + `.t-body` secondary (flex 1) + Button S Filled. Tablet: 2 columns, highlighted item stacked; mobile: 1 column, padding 16, note bar stacked with full-width button.
 

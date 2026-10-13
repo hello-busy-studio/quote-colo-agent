@@ -32,8 +32,8 @@ Page rhythm: hero → metrics → listings → **blue panel** (band) → steps �
 - C — Card per listing (3 × 4 col). Best on mobile, but loses side-by-side comparison of rates and prices.
 
 **R24 Criteria pairs**
-- A — White cards 3 × 4 col on a gradient band; "Look for" Accent tag + text, divider, "Red flag" Neutral tag + text. **Recommended**.
-- B — Same, but "Red flag" in `--color-error`. Stronger signal, but introduces red as a content color (today red = validation only).
+- A — White cards 3 × 4 col on a gradient band; "Look for" Accent tag + text, divider, "Red flag" Error tag (red text on 10% red) + text. **Chosen**.
+- B — Same, "Red flag" as a Neutral tag. Calmer, but the warning reads weaker.
 - C — R8 comparison rows (criterion left 3 col, look-for / red-flag right 9 col). Good for long texts, too long a page for 6 short items.
 
 **R25 Claim → verify cards**

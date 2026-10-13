@@ -21,6 +21,7 @@
   --color-border-neutral-hover: #CECECE;
   --color-border-accent: #0C7DFF;
   --color-error: #FF3419;
+  --color-bg-error-pale: rgba(255, 52, 25, 0.10);
   --color-disabled: #D1D6E5;
   --color-white: #FFFFFF;
   --color-white-hover: rgba(255, 255, 255, 0.80);
@@ -183,6 +184,7 @@ body.is-locked { overflow: hidden; }
 .tag { display: inline-flex; align-items: center; height: 32px; padding: 0 12px; border-radius: var(--radius-12); white-space: nowrap; font: 400 14px/16px var(--font-sans); }
 .tag--neutral { background: var(--color-bg-tertiary); color: var(--color-text-primary); }
 .tag--accent { background: var(--color-bg-accent-pale); color: var(--color-text-accent); }
+.tag--error { background: var(--color-bg-error-pale); color: var(--color-error); }
 a.tag--accent { transition: background-color var(--dur-fast) var(--ease); }
 a.tag--accent:hover { background: var(--color-bg-accent-pale-hover); }
 .tags { display: flex; flex-wrap: wrap; gap: 8px; }
