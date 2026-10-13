@@ -45,6 +45,7 @@
   --gap-section: 120px;
   --band-pad: 80px;
   --gap-small: 32px;
+  --gap-medium: 48px;
   --gap-head: 40px;
   --gap-head-inner: 16px;
   --gap-cards: 24px;
@@ -52,10 +53,10 @@
   --pad-card: 24px;
 }
 @media (max-width: 1279px) {
-  :root { --header-h: 80px; --gap-section: 80px; --band-pad: 56px; --gap-head: 32px; --gap-head-inner: 12px; --gap-cards: 16px; }
+  :root { --header-h: 80px; --gap-section: 80px; --band-pad: 56px; --gap-head: 32px; --gap-head-inner: 12px; --gap-cards: 16px; --gap-medium: 40px; }
 }
 @media (max-width: 767px) {
-  :root { --header-h: 64px; --gap-section: 48px; --band-pad: 32px; --gap-small: 24px; --gap-head: 24px; --gap-cards-16: 12px; --pad-card: 16px; }
+  :root { --header-h: 64px; --gap-section: 48px; --band-pad: 32px; --gap-small: 24px; --gap-medium: 32px; --gap-head: 24px; --gap-cards-16: 12px; --pad-card: 16px; }
 }
 
 /* ── Reset ─────────────────────────────────────── */
@@ -116,6 +117,7 @@ body.is-locked { overflow: hidden; }
 
 .sec { padding-top: var(--gap-section); }
 .sec--small { padding-top: var(--gap-small); }
+.sec--medium { padding-top: var(--gap-medium); }
 .sec--band-gap { padding-top: var(--band-pad); }
 .sec--flush { padding-top: 0; }
 .band { background: var(--surface-gradient), var(--color-bg-main); padding-block: var(--band-pad); margin-top: var(--band-pad); }
@@ -887,3 +889,20 @@ th, td { display: block; text-align: left; font-weight: inherit; }
 .faq-group { display: flex; flex-direction: column; gap: 16px; }
 .faq-group + .faq-group { margin-top: 40px; }
 @media (max-width: 767px) { .faq-group + .faq-group { margin-top: 24px; } }
+
+/* ── 9.2a Currently listed ── */
+.listed__title { margin-bottom: 24px; }
+.listed { display: grid; grid-template-columns: repeat(5, 1fr); gap: 24px; }
+.listed__card { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+.listed__text { display: flex; flex-direction: column; gap: 12px; }
+@media (max-width: 1279px) {
+  .listed { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 16px; margin-inline: -32px; padding-inline: 32px; scroll-padding-inline: 32px; scrollbar-width: none; }
+  .listed::-webkit-scrollbar { display: none; }
+  .listed__card { flex: 0 0 240px; scroll-snap-align: start; }
+}
+@media (max-width: 767px) {
+  .listed__title { margin-bottom: 16px; }
+  .listed { margin-inline: -16px; padding-inline: 16px; scroll-padding-inline: 16px; }
+  .listed__card { flex-basis: 220px; gap: 8px; }
+  .listed__text { gap: 8px; }
+}

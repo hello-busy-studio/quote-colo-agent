@@ -175,7 +175,8 @@ Section head → section content: **40 px**.
 | 0 | Header (sticky, 104 high) | — | — |
 | 1 | Hero | 0 | white |
 | 2 | Trust metrics | 32 | white |
-| 3 | Band A (gradient) starts | 32 | white |
+| 2a | Currently listed | 48 | white |
+| 3 | Band A (gradient) starts | 80 | white |
 | 3a | Deployment options | 80 | gradient |
 | — | Band A ends | 80 | gradient |
 | 4 | Provider network | 80 | white |
@@ -216,7 +217,9 @@ Styles (colors, font, radii, surfaces, shadows, icons, copy) never change betwee
 | Header height | 104 | 80 | 64 |
 | Gap between sections (same bg) | 120 | 80 | 48 |
 | Band inner padding (top/bottom) | 80 | 56 | 32 |
-| Hero → Trust, Trust → Band A | 32 | 32 | 24 |
+| Hero → Trust | 32 | 32 | 24 |
+| Trust → Currently listed | 48 | 40 | 32 |
+| Currently listed → Band A | = band padding: 80 | 56 | 32 |
 | Section head → content | 40 | 32 | 24 |
 | Section head: title ↔ subtitle | 16 | 12 | 12 |
 | Card grid gaps (24 on desktop) | 24 | 16 | 16 |
@@ -273,6 +276,7 @@ Weights and letter-spacing (−0.02em) never change. Trust-metric values on mobi
 |---|---|---|---|
 | 9.1 | Hero | One column. Order: eyebrow → h1 → CTA bar (width 100%, max 557) → caption (gap 24) → portrait block (gap 48). Portrait block: 100% wide, max 588, aspect 588/518, same composition as desktop scaled proportionally (frame 83 % width, right-aligned; quote card 70 % width bottom-left). | One column. Eyebrow → h1 (gap 16) → CTA bar: stacked, text group then full-width Button L, padding 16, gap 16, width 100% → caption (gap 16) → portrait (gap 40): frame 100% wide, aspect 486/459, image bleeds 13 % of frame height above it → quote card **below** the frame (static, full width, margin-top 16, radius 0 24 0 24, padding 16). |
 | 9.2 | Trust metrics | Grid 2×2, gap 16. | Grid 2×2, gap 12; card padding 16; tile-32 (icon 20); value 24/24. |
+| 9.2a | Currently listed | Horizontal scroll row (`overflow-x: auto; scroll-snap-type: x mandatory`), cards 240 wide, gap 16, snap start, padding-inline 32 (track bleeds to the screen edges); arrows §6.6 below (32). | Same scroll row, cards 220 wide, padding-inline 16; title → row 16; inside card gaps 8; arrows below (24). |
 | 9.3 | Deployment options | Grid 2×2, gap 16, cards auto height (row-equal). | Horizontal scroll row (`overflow-x: auto; scroll-snap-type: x mandatory`), cards 286 wide, gap 16, snap start, padding-inline 16 (track bleeds to the screen edges); button full width. |
 | 9.4 | Provider network | Tiles 240×100, logos scaled 85 %. | Tiles 200×80, logos scaled 70 %, gap 16; heading → marquee gap 24. |
 | 9.5 | How it works | One column, cards full width, auto height, gap 16; bottom block always directly under the description (gap 32). | Same as tablet; card padding 24; notice text wraps (left-aligned). |
@@ -582,7 +586,7 @@ The "Meet Bob Spiegel" block and each case-study thumbnail: clicking the play bu
 
 ### 8.10 Appearance on scroll
 - Every block fades up when it enters the viewport: from `opacity: 0; transform: translateY(24px)` to `opacity: 1; transform: none`, `--dur-reveal` (700 ms) `--ease`. Triggered once per element by IntersectionObserver (`threshold: 0.08`, `rootMargin: 0px 0px -8% 0px`).
-- Animated elements: section heads, hero groups and portrait, trust cards, provider heading and marquee, step cards, notice, chat messages, image and criterion cards, quote panels, market rows and quote, scenario cards and CTA, Who-we-help card, founder panel, video, services explorer and chips, FAQ items, footer columns. Horizontal scroll rows animate as one block.
+- Animated elements: section heads, hero groups and portrait, trust cards, currently-listed title and row, provider heading and marquee, step cards, notice, chat messages, image and criterion cards, quote panels, market rows and quote, scenario cards and CTA, Who-we-help card, founder panel, video, services explorer and chips, FAQ items, footer columns. Horizontal scroll rows animate as one block.
 - Siblings in the same row are staggered by 80 ms each (max 6 steps = 480 ms).
 - Only hide elements when JavaScript is running (`html.js [data-reveal]`), so content stays visible without JS. Off under reduced motion.
 
@@ -623,6 +627,25 @@ Flex, gap 24. Four cards 282 × 143: `card-gradient`, padding 24, `border-bottom
 | No Cost | tag | to Buyers |
 | 500+ | globe | Worldwide providers |
 | Quotes | clock | in 48&nbsp;h |
+
+### 9.2a Currently listed
+White section, `padding-top` 48 (§3.4). Container 1200, flex column, gap 24:
+- `h2.t-h4` text-primary, left-aligned: Currently Listed:
+- Row: grid `repeat(5, 1fr)`, gap 24 (5 cards ≈ 221 wide). Card (no surface — plain on white): flex column, `align-items: flex-start`, gap 12:
+  - Tag Accent (§6.3) with the deal type.
+  - Text group (flex column, gap 12): `.t-body-medium` text-primary title → `.t-caption` text-secondary location.
+- Desktop shows no arrows (nothing overflows); tablet/mobile scroll with arrows (§3.5.5, §6.6, wrapper `[data-carousel]`).
+- Cards are static (no link) until listing pages exist.
+
+| Tag | Title | Location |
+|---|---|---|
+| Buy | 75&nbsp;MW greenfield @&nbsp;6¢/kWh&nbsp;— 150&nbsp;acres | Wyoming |
+| Lease | 5→100&nbsp;MW conversion, 230k&nbsp;sq&nbsp;ft&nbsp;— 5&nbsp;MW in 90&nbsp;days | Cheyenne, WY |
+| Lease | 5→100&nbsp;MW conversion, 230k&nbsp;sq&nbsp;ft&nbsp;— 5&nbsp;MW in 90&nbsp;days | Cheyenne, WY |
+| Lease | 5→100&nbsp;MW conversion, 230k&nbsp;sq&nbsp;ft&nbsp;— 5&nbsp;MW in 90&nbsp;days | Cheyenne, WY |
+| Lease | 5→100&nbsp;MW conversion, 230k&nbsp;sq&nbsp;ft&nbsp;— 5&nbsp;MW in 90&nbsp;days | Cheyenne, WY |
+
+Cards 3–5 repeat card 2 — placeholder content (§12), replace with real listings; keep exactly 5 cards.
 
 ### 9.3 Deployment options (Band A)
 Section head (690): **What are you deploying?** / From a single server to 100+&nbsp;MW&nbsp;— matched across 500+ worldwide providers. Free to buyers.
@@ -988,6 +1011,7 @@ Header cells (columns 2–7): 10U (1-3Amp 120v, 1-5TB) · 24U – 2 to 3kW & 100
 | Video files (Meet Bob, case studies 1–2) | play button does nothing, `aria-disabled="true"` |
 | Provider names for logo alt texts | `alt=""` |
 | Form endpoint | `preventDefault()`, validate, then go to `/thank-you` |
+| Currently listed cards 3–5 (§9.2a) and their link targets | repeat card 2 as in §9.2a; cards stay static |
 
 ---
 
@@ -1092,6 +1116,7 @@ Use this section when content comes from somewhere else (e.g. a page of the old 
 | **R23 Listing table** | §15.9 | Listings/offers with 5–6 attributes, a tag per row and secondary lines. |
 | **R24 Criteria pairs** | §15.9 | "Look for / red flag", "do / don't", pros/cons per topic (3–9 items). |
 | **R25 Claim → verify** | §15.9 | "What it says vs what it means" explainers (3–9 items, one highlighted). |
+| **R27 Listing strip** | §9.2a | 3–5 short teasers (tag + one line + caption) right under the hero proof, no card surface. |
 | **R26 Grouped tables** | §15.9 | Several small tables grouped by segment, each with a title, range tag and description. |
 
 ### 15.3 Content type → recipe

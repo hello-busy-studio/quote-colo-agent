@@ -161,7 +161,7 @@
   const revealSel = [
     '.section-head', '.hero__top', '.hero__bottom', '.hero__right', '.metric', '.deploy__card', '.providers > h2', '.marquee',
     '.step', '.notice', '.msg', '.match__img', '.crit', '.review', '.panel', '.mrow', '.mquote', '.scen__card', '.scen-cta',
-    '.who__big', '.use', '.case', '.founder', '.video', '.explorer', '.browse', '.faq__item', '.fcol', '.loc-group > h3', '.table-scroll', '.note-card', '.table-foot'
+    '.who__big', '.use', '.case', '.founder', '.video', '.explorer', '.browse', '.faq__item', '.fcol', '.loc-group > h3', '.table-scroll', '.note-card', '.table-foot', '.listed__title', '.listed__card'
   ].join(',');
   // cards inside horizontal scrollers reveal together with their track
   const els = [...new Set($$(revealSel).map((el) => el.closest('.js-track') || el))];
