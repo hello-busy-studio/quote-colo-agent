@@ -302,6 +302,15 @@ Images on tablet/mobile use the same files; `object-fit: cover` with the same po
 
 All icons are in `assets/icons/`, use `currentColor`, default color `--color-text-accent`.
 
+**Icon library: [Remix Icon](https://remixicon.com/)**, **Line** style only (names ending in `-line`, e.g. `global-line`, `shield-check-line`). All icons in the set come from it. Never use the Fill style, other libraries, emoji or hand-drawn icons.
+
+**Icons never stand alone — every icon sits in a wrapper:**
+- **Content icons** (metrics, benefits, cards, features, contacts) always sit centred in a tile: `tile-40` on desktop and tablet, `tile-32` with a 20 px icon on mobile. The tile background is the one given for that block in §9; on white or gradient cards use `--color-bg-main` / pale accent as in the nearest existing block.
+- **UI icons** (arrows, chevrons, close, menu) exist only inside their component: carousel control (§6.6), text button (§6.1), nav item, FAQ toggle (§6.8), burger and modal close. They are never placed loose in text or layout.
+- An icon is never bigger than 24 inside a tile (32 only for the modal close and social icons), never scaled up as an illustration, never recoloured outside `--color-text-accent`, white on accent surfaces, or the colors listed in the table below.
+
+**Adding an icon:** find it on remixicon.com → choose the `-line` version → download SVG (24 px) → save as `assets/icons/24/<name>.svg` (and copy to `example/assets/icons/24/`) with `fill="currentColor"` on every path and no fixed colors, then add a class `.i-<name> { --i: url("assets/icons/24/<name>.svg"); }` next to the others in the stylesheet and a row in the table below.
+
 | File | Drawn at | Where |
 |---|---|---|
 | `24/handshake.svg` · `24/tag.svg` · `24/globe.svg` · `24/clock.svg` | 24 | Trust metrics 1–4 |
@@ -1151,7 +1160,7 @@ Use this section when content comes from somewhere else (e.g. a page of the old 
 
 ### 15.5 Composing a new block (only when nothing in §15.2 fits)
 
-A new block must be **assembled from existing primitives only**: section head, card surfaces (§6.4), buttons (§6.1), tags (§6.3: Neutral, Accent, Error), tiles + icons (§4), checklist rows (§6.5), number badges, metric type, tables (§6.9), images (§5), carousel controls (§6.6), accordion (§6.8). No new colors, fonts, shadows, radii, icon styles or decorations.
+A new block must be **assembled from existing primitives only**: section head, card surfaces (§6.4), buttons (§6.1), tags (§6.3: Neutral, Accent, Error), tiles + icons (§4; new icons only from Remix Icon Line, always in a tile), checklist rows (§6.5), number badges, metric type, tables (§6.9), images (§5), carousel controls (§6.6), accordion (§6.8). No new colors, fonts, shadows, radii, icon styles or decorations.
 
 Rules:
 1. Pick the closest recipe and change **one** thing (span, count, order of elements, background surface) — not several.
